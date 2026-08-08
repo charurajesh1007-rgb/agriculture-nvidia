@@ -1,0 +1,9 @@
+@echo off
+echo Starting backend server...
+start powershell -ExecutionPolicy Bypass -File "%~dp0server.ps1"
+
+echo Waiting for server to initialize...
+timeout /t 2 /nobreak > nul
+
+echo Opening frontend in browser...
+start http://localhost:8080/

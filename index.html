@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriAgent Multimodal</title>
+    <link rel="icon" href="data:,">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <div class="title-row">
+                    <div class="status-dot green-dot"></div>
+                    <h1>AgriAgent Multimodal</h1>
+                </div>
+                <div class="subtitle">Enterprise Agronomist Agent System • NVIDIA NIM Powered</div>
+            </div>
+            <div class="header-right">
+                <div class="coordinates-pill">
+                    <div class="status-dot green-dot"></div>
+                    <span>Default Coordinates Latch: 28.6139, 77.209</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="workspace">
+            <div class="workspace-grid">
+                <!-- Left: Image Upload -->
+                <div class="upload-section">
+                    <div class="image-dropzone" id="dropzone">
+                        <input type="file" id="file-input" accept="image/*" style="display: none;">
+                        <div id="upload-placeholder" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--text-muted);">
+                            <i class="ph ph-image" style="font-size: 3rem; margin-bottom: 10px;"></i>
+                            <span style="font-size: 0.85rem;">Click or drag photo here</span>
+                        </div>
+                        <img src="" id="image-preview" alt="Crop preview" style="display: none;">
+                    </div>
+                </div>
+
+                <!-- Right: Inputs -->
+                <div class="input-section">
+                    <div class="input-group">
+                        <label>SELECT LANGUAGE DIALECT MODE</label>
+                        <div class="language-selector" style="width: 100%;">
+                            <select id="language-select" style="width: 100%; padding: 12px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: var(--text-main); border-radius: 8px; font-family: inherit; font-size: 0.9rem; outline: none; cursor: pointer;">
+                                <option value="English">English</option>
+                                <option value="Hindi">Hindi (हिंदी)</option>
+                                <option value="Telugu">Telugu (తెలుగు)</option>
+                                <option value="Tamil">Tamil (தமிழ்)</option>
+                                <option value="Kannada">Kannada (ಕನ್ನಡ)</option>
+                                <option value="Malayalam">Malayalam (മലയാളം)</option>
+                                <option value="Marathi">Marathi (मराठी)</option>
+                                <option value="Bengali">Bengali (বাংলা)</option>
+                                <option value="Spanish">Spanish (Español)</option>
+                                <option value="French">French (Français)</option>
+                            </select>
+                        </div>
+
+                    <div class="input-group">
+                        <label>DESCRIBE SYMPTOMS / ASK QUESTIONS</label>
+                        <div class="textarea-wrapper">
+                            <textarea id="symptoms-input" placeholder="e.g. My tomato plants have brown spots on lower leaves..."></textarea>
+                            <button class="mic-btn" aria-label="Voice Input">
+                                <i class="ph-fill ph-microphone"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Action Button -->
+        <button class="run-analysis-btn" id="run-btn">
+            <div class="status-dot blue-dot" id="btn-dot"></div>
+            <span id="btn-text">Run AI Diagnostic Analysis</span>
+        </button>
+
+        <!-- Output / Diagnosis Area -->
+        <div id="diagnosis-result" class="diagnosis-result hidden">
+            <!-- LLM output will be injected here -->
+        </div>
+
+        <!-- Dashboard Stats -->
+        <div class="dashboard-stats">
+            <div class="stat-column">
+                <div class="stat-label">ENVIRONMENTAL STATS</div>
+                <div class="stat-value-row">
+                    <div class="stat-main">31.5°C</div>
+                    <div class="stat-sub-green">88% Humid</div>
+                </div>
+                <div class="stat-desc">Warm and Humid with scattered showers</div>
+            </div>
+
+            <div class="stat-column">
+                <div class="stat-label">NEAREST CO-OP SUPPLY</div>
+                <div class="stat-value-row">
+                    <div class="stat-main">Green Valley Farmers Co-op</div>
+                </div>
+                <div class="stat-desc"><i class="ph-fill ph-car-profile"></i> 3.4 km away</div>
+            </div>
+
+            <div class="stat-column">
+                <div class="stat-label">15KM OUTBREAK STATUS</div>
+                <div class="stat-value-row">
+                    <div class="stat-main text-red">Fall Armyworm</div>
+                    <div class="alert-badge">ALERT</div>
+                </div>
+                <div class="stat-desc">3 cases in last 72 hours</div>
+            </div>
+        </div>
+
+        <!-- Protocol Banner -->
+        <div class="protocol-banner">
+            <div class="banner-icon">
+                <i class="ph-fill ph-megaphone"></i>
+            </div>
+            <div class="banner-text">
+                <div class="banner-title">Community Epidemic Protocol Dispatched</div>
+                <div class="banner-desc">Broadcasting SMS alerts to 24 farmers within 15km sector grid.</div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
